@@ -27,7 +27,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.buttonColor,
     this.decoration,
     this.height = 50,
-    this.width,
+    this.width =300,
   });
 
   @override
