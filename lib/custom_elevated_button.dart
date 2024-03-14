@@ -36,6 +36,7 @@ class CustomElevatedButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: height,
+        width: width,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
