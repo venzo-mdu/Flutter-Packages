@@ -37,7 +37,7 @@ class _CustomToggleSwitchState extends State<CustomToggleSwitch> {
         color: widget.containerColor,
       ),
       height: MediaQuery.of(context).size.height * .066,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width-41,
       padding: const EdgeInsets.all(2),
       child: ToggleSwitch(
           centerText: true,
