@@ -101,11 +101,11 @@ class _ExpandableListViewState extends State<ExpandableListView> {
                         radius: 15,
                         backgroundColor: const Color(0xffECECEC),
                         key: Key(widget.isExpanded.toString()), // Key to differentiate between widgets
-                        child:widget.isExpanded ?
-                        const Icon(Icons.expand_less) :
-                        const Icon(Icons.expand_more),
+                        // child:widget.isExpanded ?
+                        // const Icon(Icons.expand_less) :
+                        // const Icon(Icons.expand_more),
 
-                        // child: widget.isExpanded ? SvgPicture.asset('assets/images/svg/taskicon.svg') : SvgPicture.asset('assets/images/svg/taskicon1.svg'),
+                        child: widget.isExpanded ? SvgPicture.asset('assets/images/svg/taskicon.svg') : SvgPicture.asset('assets/images/svg/taskicon1.svg'),
                       ),
                     )
                   ],
