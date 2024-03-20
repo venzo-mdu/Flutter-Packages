@@ -3,7 +3,7 @@ library custom_dropdown;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustonDropdown extends StatefulWidget {
+class CustomDropdown extends StatefulWidget {
   bool isVisible;
   final Function() onClick;
   final Function() onClose;
@@ -11,7 +11,7 @@ class CustonDropdown extends StatefulWidget {
   final List dropdownList;
   String dropdownTitle;
 
-  CustonDropdown({
+  CustomDropdown({
     super.key,
     this.isVisible = false,
     this.isStrechedDropDown = false,
@@ -21,10 +21,10 @@ class CustonDropdown extends StatefulWidget {
   });
 
   @override
-  State<CustonDropdown> createState() => _CustonDropdownState();
+  State<CustomDropdown> createState() => _CustomDropdownState();
 }
 
-class _CustonDropdownState extends State<CustonDropdown> {
+class _CustomDropdownState extends State<CustomDropdown> {
   LayerLink layerLink = LayerLink();
   OverlayEntry? entry;
 
@@ -143,56 +143,56 @@ class _CustonDropdownState extends State<CustonDropdown> {
     );
   }
 
-  Widget dropdown() => Material(
-        child: Container(
-          margin: const EdgeInsets.only(right: 40),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(27), bottomRight: Radius.circular(27)),
-            border: widget.isStrechedDropDown ? Border.all(color: const Color(0xffE3E3E3)) : Border.all(color: Colors.transparent),
-          ),
-          child: ExpandedSection(
-            expand: widget.isStrechedDropDown,
-            height: 100,
-            child: ListView.builder(
-                padding: const EdgeInsets.all(0),
-                shrinkWrap: true,
-                itemCount: widget.dropdownList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          widget.dropdownTitle = widget.dropdownList.elementAt(index);
-                          hideOverlay();
-                          widget.isVisible = true;
-                          widget.isStrechedDropDown = false;
-                          widget.onClick();
-                        });
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            widget.dropdownList.elementAt(index),
-                            style: const TextStyle(
-                              fontFamily: 'Gilroy-Medium',
-                              fontSize: 15,
-                              color: Color(0xff5E5E5E),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          // SvgPicture.asset('assets/svg/radioButton.svg'),
-                        ],
+  Widget dropdown() => Container(
+    margin: const EdgeInsets.only(right: 40),
+    decoration: BoxDecoration(
+      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(27), bottomRight: Radius.circular(27)),
+      border: widget.isStrechedDropDown ? Border.all(color: const Color(0xffE3E3E3)) : Border.all(color: Colors.transparent),
+    ),
+    child: ExpandedSection(
+      expand: widget.isStrechedDropDown,
+      height: 100,
+      child: ListView.builder(
+          padding: const EdgeInsets.all(0),
+          shrinkWrap: true,
+          itemCount: widget.dropdownList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    widget.dropdownTitle = widget.dropdownList.elementAt(index);
+                    hideOverlay();
+                    widget.isVisible = true;
+                    widget.isStrechedDropDown = false;
+                    widget.onClick();
+                  });
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DefaultTextStyle(
+                      style: const TextStyle(
+                        fontFamily: 'Gilroy-Medium',
+                        fontSize: 15,
+                        color: Color(0xff5E5E5E),
+                      ),
+                      child: Text(
+                        widget.dropdownList.elementAt(index),
                       ),
                     ),
-                  );
-                }),
-          ),
-        ),
-      );
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    // SvgPicture.asset('assets/svg/radioButton.svg'),
+                  ],
+                ),
+              ),
+            );
+          }),
+    ),
+  );
 
   void showOverlay() {
     entry = OverlayEntry(
