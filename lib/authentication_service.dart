@@ -4,6 +4,7 @@ class FirebaseAuthenticationService {
 
   Future<void> signInWithOTP(String phoneNumber) async {
     FirebaseAuth auth = FirebaseAuth.instance;
+
     try {
       verificationCompleted(AuthCredential authResult) {
         print('Phone number automatically verified and user signed in: $authResult');
